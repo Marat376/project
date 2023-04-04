@@ -42,10 +42,10 @@ class LinkHandlerChainTest {
 
     private Stream<Arguments> getParametersCorrect() {
         return Stream.of(
-                Arguments.of("https://github.com/Wieceslaw/tinkoff-project", true),
+                Arguments.of("https://github.com/Marat376/project", true),
                 Arguments.of("https://stackoverflow.com/questions/9706688/what", true),
                 Arguments.of("https://stackoverflow.com/questions/9706688/123123", true),
-                Arguments.of("https://github.com/Wieceslaw/214123", true)
+                Arguments.of("https://github.com/Marat376/214123", true)
         );
     }
 
@@ -55,8 +55,8 @@ class LinkHandlerChainTest {
                 Arguments.of("1", false),
                 Arguments.of("github.com/", false),
                 Arguments.of("https://github.com/", false),
-                Arguments.of("https://github.com/Wieceslaw", false),
-                Arguments.of("https://github.com/Wieceslaw/asd/asd", false),
+                Arguments.of("https://github.com/Marat376", false),
+                Arguments.of("https://github.com/Marat376/asd/asd", false),
                 Arguments.of("https://stackoverflow.random/questions/sadasd/what", false),
                 Arguments.of("https://stackoverflow.random/questions/9706688/what/asdasd", false),
                 Arguments.of("https://stackoverflow.random/asdsa/9706688/what", false)
@@ -67,7 +67,7 @@ class LinkHandlerChainTest {
         return Stream.of(
                 Arguments.of("https://ru.wikipedia.org/questions/9706688/what", false),
                 Arguments.of("https://stackoverflow.random/questions/9706688/what", false),
-                Arguments.of("https://github.random/Wieceslaw/tinkoff-project", false)
+                Arguments.of("https://github.random/Marat376/project", false)
         );
     }
 }

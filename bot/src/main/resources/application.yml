@@ -11,6 +11,6 @@ app:
   test: 42
   bot:
     name: "Khakov_Tinkoff_bot"
-    token: "5726582564:AAFsSp_JeaLkZL50R03bkgPiGr05428e-EY"
+    token: ${TOKEN}
   scrapper:
     url: "localhost"
