@@ -6,11 +6,13 @@ management:
   server:
     port: 8080
 
+server:
+  port: 8083
 
 app:
   test: 42
   bot:
     name: "Khakov_Tinkoff_bot"
-    token: ${TOKEN}
+    token: ${BOT_TOKEN}
   scrapper:
-    url: "localhost"
+    url: "http://localhost:8080"
