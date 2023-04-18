@@ -1,4 +1,4 @@
-package ru.tinkoff.edu.java.scrapper.model.stackoverflow;
+package ru.tinkoff.edu.java.scrapper.model.client;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
