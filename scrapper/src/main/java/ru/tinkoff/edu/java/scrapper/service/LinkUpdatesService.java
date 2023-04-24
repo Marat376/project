@@ -14,9 +14,9 @@ import ru.tinkoff.edu.java.scrapper.model.bot.LinkUpdateRequest;
 import ru.tinkoff.edu.java.scrapper.model.client.UpdatesInfo;
 import ru.tinkoff.edu.java.scrapper.model.entity.LinkEntity;
 import ru.tinkoff.edu.java.scrapper.exception.InternalError;
-import ru.tinkoff.edu.java.scrapper.service.client.BotWebService;
-import ru.tinkoff.edu.java.scrapper.service.client.GitHubWebService;
-import ru.tinkoff.edu.java.scrapper.service.client.StackOverflowWebService;
+import ru.tinkoff.edu.java.scrapper.service.bot.BotWebService;
+import ru.tinkoff.edu.java.scrapper.service.github.GitHubWebService;
+import ru.tinkoff.edu.java.scrapper.service.stackoverflow.StackOverflowWebService;
 import ru.tinkoff.edu.java.scrapper.service.domain.api.LinkService;
 import ru.tinkoff.edu.java.scrapper.service.domain.api.SubscriptionService;
 
@@ -63,9 +63,11 @@ public class LinkUpdatesService {
     public void updateLinks() {
         getUncheckedLinks().forEach(link -> {
             UpdatesInfo updatesInfo = fetchUpdates(link);
-            if (updatesInfo != null &&
+
+            boolean shouldSendUpdate = updatesInfo != null &&
                     (link.getLastUpdateTime() == null ||
-                            link.getLastUpdateTime().isBefore(updatesInfo.lastUpdateTime()))) {
+                            link.getLastUpdateTime().isBefore(updatesInfo.lastUpdateTime()));
+            if (shouldSendUpdate) {
                 sendUpdates(link, updatesInfo);
             }
         });
