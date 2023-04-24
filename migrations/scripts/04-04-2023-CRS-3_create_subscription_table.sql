@@ -1,7 +1,7 @@
 --liquibase formatted sql
 
 
---changeset wieceslaw:CRS-3_subscription_table
+--changeset marat376:CRS-3_subscription_table
 CREATE TABLE IF NOT EXISTS subscription
 (
     chat_id BIGINT REFERENCES chat ON DELETE CASCADE,
