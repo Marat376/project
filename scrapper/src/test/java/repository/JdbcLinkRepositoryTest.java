@@ -13,6 +13,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 import ru.tinkoff.edu.java.scrapper.IntegrationEnvironment;
 import ru.tinkoff.edu.java.scrapper.model.entity.LinkEntity;
+import ru.tinkoff.edu.java.scrapper.repository.jdbc.JdbcLinkRepository;
 
 import java.sql.PreparedStatement;
 import java.util.List;
@@ -33,7 +34,7 @@ class JdbcLinkRepositoryTest extends IntegrationEnvironment {
     @Rollback
     void add__addOne_oneAdded() {
         // given
-        String url = "https://github.com/Wieceslaw/tinkoff-project";
+        String url = "https://github.com/Marat376/project";
 
         // when
         int countBefore = getAll().size();
@@ -49,7 +50,7 @@ class JdbcLinkRepositoryTest extends IntegrationEnvironment {
     @Rollback
     void add__alreadyExist_throwsException() {
         // given
-        String url = "https://github.com/Wieceslaw/tinkoff-project";
+        String url = "https://github.com/Marat376/project";
 
         // when
         linkRepository.add(url);
@@ -63,7 +64,7 @@ class JdbcLinkRepositoryTest extends IntegrationEnvironment {
     @Rollback
     void find__exists_returnsOne() {
         // given
-        String url = "https://github.com/Wieceslaw/tinkoff-project";
+        String url = "https://github.com/Marat376/project";
         Long id = createLink(url);
 
         // when
@@ -78,7 +79,7 @@ class JdbcLinkRepositoryTest extends IntegrationEnvironment {
     @Rollback
     void find__notExists_throwsException() {
         // given
-        String url = "https://github.com/Wieceslaw/tinkoff-project";
+        String url = "https://github.com/Marat376/project";
 
         // when
 
@@ -91,7 +92,7 @@ class JdbcLinkRepositoryTest extends IntegrationEnvironment {
     @Rollback
     void findById__exists_returnsOne() {
         // given
-        String url = "https://github.com/Wieceslaw/tinkoff-project";
+        String url = "https://github.com/Marat376/project";
         Long id = createLink(url);
 
         // when
@@ -132,7 +133,7 @@ class JdbcLinkRepositoryTest extends IntegrationEnvironment {
     @Rollback
     void findAll__oneExists_oneReturned() {
         // given
-        String url = "https://github.com/Wieceslaw/tinkoff-project";
+        String url = "https://github.com/Marat376/project";
         createLink(url);
 
         // when
@@ -147,7 +148,7 @@ class JdbcLinkRepositoryTest extends IntegrationEnvironment {
     @Rollback
     void findWithChatSubscription__exists_returnsNotEmpty() {
         // given
-        String url = "https://github.com/Wieceslaw/tinkoff-project";
+        String url = "https://github.com/Marat376/project";
         Long chatId = 1L;
         Long linkId = createLink(url);
         createChat(chatId);
@@ -179,7 +180,7 @@ class JdbcLinkRepositoryTest extends IntegrationEnvironment {
     @Rollback
     void remove__oneExists_oneRemoved() {
         // given
-        String url = "https://github.com/Wieceslaw/tinkoff-project";
+        String url = "https://github.com/Marat376/project";
         createLink(url);
 
         // when
@@ -197,7 +198,7 @@ class JdbcLinkRepositoryTest extends IntegrationEnvironment {
     @Rollback
     void remove__notExists_zeroRemoved() {
         // given
-        String url = "https://github.com/Wieceslaw/tinkoff-project";
+        String url = "https://github.com/Marat376/project";
 
         // when
         int countBefore = getAll().size();
@@ -214,7 +215,7 @@ class JdbcLinkRepositoryTest extends IntegrationEnvironment {
     @Rollback
     void removeById__exists_removed() {
         // given
-        String url = "https://github.com/Wieceslaw/tinkoff-project";
+        String url = "https://github.com/Marat376/project";
         Long id = createLink(url);
 
         // when
@@ -247,7 +248,7 @@ class JdbcLinkRepositoryTest extends IntegrationEnvironment {
     @Rollback
     void removeWithZeroSubscriptions__doesNotHaveSub_removed() {
         // given
-        String url = "https://github.com/Wieceslaw/tinkoff-project";
+        String url = "https://github.com/Marat376/project";
         createLink(url);
 
         // when
@@ -265,7 +266,7 @@ class JdbcLinkRepositoryTest extends IntegrationEnvironment {
     @Rollback
     void removeWithZeroSubscriptions__allLinksHaveSub_nothingRemoved() {
         // given
-        String url = "https://github.com/Wieceslaw/tinkoff-project";
+        String url = "https://github.com/Marat376/project";
         Long chatId = 1L;
         Long linkId = createLink(url);
         createChat(chatId);

@@ -12,6 +12,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 import ru.tinkoff.edu.java.scrapper.IntegrationEnvironment;
 import ru.tinkoff.edu.java.scrapper.model.entity.SubscriptionEntity;
+import ru.tinkoff.edu.java.scrapper.repository.jdbc.JdbcSubscriptionRepository;
 
 import java.sql.PreparedStatement;
 import java.util.List;
@@ -31,7 +32,7 @@ class JdbcSubscriptionRepositoryTest extends IntegrationEnvironment {
     @Rollback
     void add__addOne_oneAdded() {
         // given
-        String url = "https://github.com/Wieceslaw/tinkoff-project";
+        String url = "https://github.com/Marat376/project";
         Long chatId = 1L;
         Long linkId = createLink(url);
         createChat(chatId);
@@ -50,7 +51,7 @@ class JdbcSubscriptionRepositoryTest extends IntegrationEnvironment {
     @Rollback
     void add__alreadyExist_throwsException() {
         // given
-        String url = "https://github.com/Wieceslaw/tinkoff-project";
+        String url = "https://github.com/Marat376/project";
         Long chatId = 1L;
         Long linkId = createLink(url);
         createChat(chatId);
@@ -82,7 +83,7 @@ class JdbcSubscriptionRepositoryTest extends IntegrationEnvironment {
     @Rollback
     void findAll__oneExists_oneReturned() {
         // given
-        String url = "https://github.com/Wieceslaw/tinkoff-project";
+        String url = "https://github.com/Marat376/project";
         Long chatId = 1L;
         Long linkId = createLink(url);
         createChat(chatId);
@@ -102,7 +103,7 @@ class JdbcSubscriptionRepositoryTest extends IntegrationEnvironment {
     @Rollback
     void remove__oneExists_oneRemoved() {
         // given
-        String url = "https://github.com/Wieceslaw/tinkoff-project";
+        String url = "https://github.com/Marat376/project";
         Long chatId = 1L;
         Long linkId = createLink(url);
         createChat(chatId);
@@ -141,7 +142,7 @@ class JdbcSubscriptionRepositoryTest extends IntegrationEnvironment {
     @Rollback
     void countSubscriptions__oneSubscriber_oneCounted() {
         // given
-        String url = "https://github.com/Wieceslaw/tinkoff-project";
+        String url = "https://github.com/Marat376/project";
         Long chatId = 1L;
         Long linkId = createLink(url);
         createChat(chatId);
@@ -159,7 +160,7 @@ class JdbcSubscriptionRepositoryTest extends IntegrationEnvironment {
     @Rollback
     void countSubscriptions__zeroSubscribers_zeroCounted() {
         // given
-        String url = "https://github.com/Wieceslaw/tinkoff-project";
+        String url = "https://github.com/Marat376/project";
         Long chatId = 1L;
         Long linkId = createLink(url);
         createChat(chatId);
