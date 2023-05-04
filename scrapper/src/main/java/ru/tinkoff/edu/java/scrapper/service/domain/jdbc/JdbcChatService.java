@@ -4,13 +4,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.transaction.annotation.Transactional;
-import ru.tinkoff.edu.java.scrapper.exception.InternalError;
 import ru.tinkoff.edu.java.scrapper.repository.jdbc.JdbcChatRepository;
 import ru.tinkoff.edu.java.scrapper.repository.jdbc.JdbcLinkRepository;
 import ru.tinkoff.edu.java.scrapper.service.domain.api.ChatService;
 
 @Slf4j
-//@Service
 @RequiredArgsConstructor
 public class JdbcChatService implements ChatService {
     private final JdbcChatRepository chatRepository;
@@ -23,7 +21,7 @@ public class JdbcChatService implements ChatService {
             chatRepository.add(id);
         } catch (DuplicateKeyException e) {
             log.error(e.getMessage());
-            throw new InternalError("Chat already registered", e);
+            throw new IllegalArgumentException("Chat already registered", e);
         }
     }
 
