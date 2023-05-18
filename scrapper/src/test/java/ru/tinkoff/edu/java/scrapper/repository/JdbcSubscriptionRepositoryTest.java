@@ -82,7 +82,7 @@ class JdbcSubscriptionRepositoryTest extends IntegrationEnvironment {
     @Rollback
     void findAll__oneExists_oneReturned() {
         // given
-        String url = "https://github.com/Marat376/project;
+        String url = "https://github.com/Marat376/project";
         Long chatId = 1L;
         Long linkId = createLink(url);
         createChat(chatId);
