@@ -22,9 +22,13 @@ import org.jooq.meta.jaxb.Target;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.testcontainers.containers.PostgreSQLContainer;
 
-public class JooqCodegen {
+@SuppressWarnings("UncommentedMain")
+
+public final class JooqCodegen {
     private static final PostgreSQLContainer<?> DB_CONTAINER;
     private static final String MASTER_PATH = "migrations/master.xml";
+
+    private JooqCodegen() {}
 
     static {
         DB_CONTAINER = new PostgreSQLContainer<>("postgres:15");
