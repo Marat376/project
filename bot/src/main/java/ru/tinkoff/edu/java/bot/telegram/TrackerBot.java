@@ -1,6 +1,7 @@
 package ru.tinkoff.edu.java.bot.telegram;
 
 import jakarta.annotation.PostConstruct;
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -11,11 +12,9 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ru.tinkoff.edu.java.bot.configuration.ApplicationConfig;
-import ru.tinkoff.edu.java.bot.model.controller.LinkUpdateRequest;
 import ru.tinkoff.edu.java.bot.exception.SendingMessageException;
+import ru.tinkoff.edu.java.bot.model.controller.LinkUpdateRequest;
 import ru.tinkoff.edu.java.bot.telegram.command.AbstractPublicCommand;
-
-import java.util.List;
 
 @Slf4j
 @Component
@@ -34,9 +33,9 @@ public class TrackerBot extends TelegramLongPollingBot {
     @PostConstruct
     private void init() {
         List<BotCommand> botCommands = commands
-                .stream()
-                .map(AbstractPublicCommand::toBotCommand)
-                .toList();
+            .stream()
+            .map(AbstractPublicCommand::toBotCommand)
+            .toList();
         SetMyCommands setMyCommands = new SetMyCommands();
         setMyCommands.setCommands(botCommands);
         try {
@@ -55,8 +54,10 @@ public class TrackerBot extends TelegramLongPollingBot {
                 sendMessage = messageHandler.handle(message);
             } catch (RuntimeException ex) {
                 log.error(ex.toString());
-                sendMessage = new SendMessage(message.getChatId().toString(),
-                        "Sorry, internal error happened");
+                sendMessage = new SendMessage(
+                    message.getChatId().toString(),
+                    "Sorry, internal error happened"
+                );
             }
             try {
                 execute(sendMessage);
@@ -79,9 +80,9 @@ public class TrackerBot extends TelegramLongPollingBot {
     private void sendMessage(Long chatId, String text) {
         try {
             SendMessage sendMessage = SendMessage.builder()
-                    .chatId(chatId)
-                    .text(text)
-                    .build();
+                .chatId(chatId)
+                .text(text)
+                .build();
             this.execute(sendMessage);
         } catch (TelegramApiException e) {
             throw new SendingMessageException(chatId, e);

@@ -24,12 +24,14 @@ app:
     routing-key: upd
 
 spring:
+  application:
+    name: "scrapper"
   datasource:
-    url: ${DB_URL}
-    password: ${DB_PASSWORD}
-    username: ${DB_USERNAME}
+    url: jdbc:postgresql://localhost:5432/scrapper
+    username: postgres
+    password: password
   rabbitmq:
     host: localhost
     port: 5672
-    username: ${QUEUE_USERNAME}
-    password: ${QUEUE_PASSWORD}
+    username: user
+    password: pass

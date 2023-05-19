@@ -1,5 +1,9 @@
 package ru.tinkoff.edu.java.scrapper.repository;
 
+import java.sql.PreparedStatement;
+import java.util.List;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,13 +19,7 @@ import ru.tinkoff.edu.java.scrapper.IntegrationEnvironment;
 import ru.tinkoff.edu.java.scrapper.model.model.Link;
 import ru.tinkoff.edu.java.scrapper.repository.jdbc.JdbcLinkRepository;
 
-import java.sql.PreparedStatement;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
-@SpringBootTest
+@SpringBootTest(properties = {"app.database-access-type=jdbc"})
 class JdbcLinkRepositoryTest extends IntegrationEnvironment {
     @Autowired
     private JdbcTemplate template;
@@ -248,7 +246,7 @@ class JdbcLinkRepositoryTest extends IntegrationEnvironment {
     @Rollback
     void removeWithZeroSubscriptions__doesNotHaveSub_removed() {
         // given
-        String url = "https://github.com/Marat376/project";
+        String url = "https://github.com/Wieceslaw/tinkoff-project";
         createLink(url);
 
         // when
@@ -266,7 +264,7 @@ class JdbcLinkRepositoryTest extends IntegrationEnvironment {
     @Rollback
     void removeWithZeroSubscriptions__allLinksHaveSub_nothingRemoved() {
         // given
-        String url = "https://github.com/Marat376/project";
+        String url = "https://github.com/Wieceslaw/tinkoff-project";
         Long chatId = 1L;
         Long linkId = createLink(url);
         createChat(chatId);

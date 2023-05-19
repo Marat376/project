@@ -1,5 +1,8 @@
 package ru.tinkoff.edu.java.scrapper.service.domain.jpa;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -7,8 +10,6 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 import ru.tinkoff.edu.java.scrapper.IntegrationEnvironment;
 import ru.tinkoff.edu.java.scrapper.service.domain.api.ChatService;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class JpaChatServiceTest extends IntegrationEnvironment {
@@ -85,7 +86,7 @@ class JpaChatServiceTest extends IntegrationEnvironment {
         // given
         Long chatId = 1L;
         Long linkId = 1L;
-        String url = "https://github.com/Marat376/project/";
+        String url = "https://github.com/Marat/project/";
         helper.addChat(chatId);
         helper.addLink(linkId, url);
         helper.addSubscription(chatId, linkId);
