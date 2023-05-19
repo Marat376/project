@@ -21,15 +21,16 @@ springdoc:
 
 management:
   server:
-    port: 8080
+    port: 8092
 
 spring:
   application:
     name: "scrapper"
   datasource:
     url: jdbc:postgresql://localhost:5432/scrapper
-    password: password
+    driver-class-name: org.postgresql.Driver
     username: postgres
+    password: password
   rabbitmq:
     host: localhost
     port: 5672
