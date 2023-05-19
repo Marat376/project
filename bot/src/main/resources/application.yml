@@ -12,7 +12,7 @@ server:
 app:
   bot:
     name: "Khakov_Tinkoff_bot"
-    token: ${BOT_TOKEN}
+    token: 5726582564:AAFsSp_JeaLkZL50R03bkgPiGr05428e-EY
   scrapper:
     url: "http://localhost:8080"
   rabbit-queue:
